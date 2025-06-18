@@ -46,7 +46,7 @@ A smart Discord bot tailored for BITS Pilani Goa Campus, designed to automate st
 - Electronics & Computer (AC)
 - Mathematics & Computing (AD)
 - Environmental & Sustainability (AJ)
-- M.Sc. programs (B1–B7)
+- MSc. programs (B1–B7)
 
 ---
 
