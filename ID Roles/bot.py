@@ -38,7 +38,7 @@ CITY_CODES = {   ### leaving it here if in case we expand to more campuses
 }
 
 def parse_student_id(student_id):
-    pattern = r'^(\d{4})([A-Z]{1,2}\d?)([A-Z]{1,2}\d?|PS|TS)(\d{4})([A-Z])$'
+    pattern = r'^(\d{4})([A-Z]{1,2}\d?)([A-Z]{1,2}\d?|PS|TS|IS|UB|RM)(\d{4})([A-Z])$'
     match = re.match(pattern, student_id.upper())
     
     if match:
@@ -48,7 +48,7 @@ def parse_student_id(student_id):
         roll_number = match.group(4)
         city_code = match.group(5)
         
-        if middle_code in ['PS', 'TS']:
+        if middle_code in ['PS', 'TS', 'IS', 'UB', 'RM']:
             second_branch_code = None
             second_branch_name = None
         else:
@@ -299,7 +299,7 @@ async def test_parse(ctx, student_id: str):
         if parsed['has_dual_branch']:
             embed.add_field(name="Second Branch", value=f"{parsed['second_branch_code']} - {parsed['second_branch_name']}", inline=True)
         else:
-            embed.add_field(name="Second Branch", value="None (PS/TS)", inline=True)
+            embed.add_field(name="Second Branch", value="None (PS/TS/IS/UB/RM)", inline=True)
             
         embed.add_field(name="Campus", value=f"{parsed['city_code']} - {parsed['city_name']}", inline=True)
         embed.add_field(name="Roll Number", value=parsed['roll_number'], inline=True)
